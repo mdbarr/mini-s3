@@ -1,0 +1,26 @@
+{
+  "name": "mini-s3",
+  "version": "0.0.1",
+  "description": "Mini S3 API Server with configurable back-ends",
+  "main": "index.js",
+  "repository": "git@github.com:mdbarr/mini-s3.git",
+  "author": "Mark Barr <mark@hyperingenuity.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "restify": "^6.3.4"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.176.0",
+    "eslint": "^4.14.0",
+    "mocha": "^4.1.0"
+  },
+  "scripts": {
+    "build": "docker build -t mdbarr/mini-s3 .",
+    "docker": "docker run -d --rm --name mini-s3 -p 127.0.0.1:9090:9090 mdbarr/mini-s3",
+    "fix": "./node_modules/.bin/eslint --fix *.js **/*.js || exit 0",
+    "lint": "./node_modules/.bin/eslint *.js **/*.js || exit 0",
+    "start": "forever ./index.js",
+    "test": "./node_modules/.bin/mocha ./test/*Spec.js"
+  }
+}
